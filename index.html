@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saveur - Premium Restaurant</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-utensils"></i>
+                <span>Saveur</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#menu" class="nav-link">Menu</a></li>
+                <li><a href="#reservations" class="nav-link">Reservations</a></li>
+                <li><a href="#events" class="nav-link">Events</a></li>
+                <li><a href="#support" class="nav-link">Support</a></li>
+                <li><a href="#reviews" class="nav-link">Reviews</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="cart-btn" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </button>
+                <div class="currency-selector">
+                    <select id="currency" onchange="changeCurrency()">
+                        <option value="USD">$ USD</option>
+                        <option value="EUR">€ EUR</option>
+                        <option value="AED">د.إ AED</option>
+                        <option value="INR">₹ INR</option>
+                    </select>
+                </div>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Saveur</h1>
+            <p>Experience culinary excellence with every bite</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="scrollToSection('menu')">
+                    <i class="fas fa-utensils"></i> View Menu
+                </button>
+                <button class="btn-secondary" onclick="scrollToSection('reservations')">
+                    <i class="fas fa-calendar"></i> Book Table
+                </button>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="floating-elements">
+                <div class="floating-element"></div>
+                <div class="floating-element"></div>
+                <div class="floating-element"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu-section">
+        <div class="container">
+            <h2 class="section-title">Our Menu</h2>
+            <div class="menu-tabs">
+                <button class="tab-btn active" onclick="showMenuCategory('starters')">
+                    <i class="fas fa-seedling"></i> Starters
+                </button>
+                <button class="tab-btn" onclick="showMenuCategory('mains')">
+                    <i class="fas fa-drumstick-bite"></i> Main Course
+                </button>
+                <button class="tab-btn" onclick="showMenuCategory('drinks')">
+                    <i class="fas fa-glass-cheers"></i> Beverages
+                </button>
+                <button class="tab-btn" onclick="showMenuCategory('desserts')">
+                    <i class="fas fa-ice-cream"></i> Desserts
+                </button>
+            </div>
+
+            <!-- Starters -->
+            <div id="starters" class="menu-category active">
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="item-image">
+                            <div class="image-placeholder">🥗</div>
+                            <div class="item-badge">Popular</div>
+                        </div>
+                        <div class="item-details">
+                            <h3>Caesar Salad</h3>
+                            <p>Fresh romaine lettuce with parmesan cheese and croutons</p>
+                            <div class="item-price">
+                                <span class="price" data-usd="12" data-eur="11" data-aed="44" data-inr="999">$12</span>
+                            </div>
+                            <button class="add-to-cart" onclick="addToCart('Caesar Salad', 12, 'starters')">
+                                <i class="fas fa-plus"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-image">
+                            <div class="image-placeholder">🍤</div>
+                        </div>
+                        <div class="item-details">
+                            <h3>Garlic Prawns</h3>
+                            <p>Succulent prawns sautéed in garlic butter and herbs</p>
+                            <div class="item-price">
+                                <span class="price" data-usd="18" data-eur="16" data-aed="66" data-inr="1499">$18</span>
+                            </div>
+                            <button class="add-to-cart" onclick="addToCart('Garlic Prawns', 18, 'starters')">
+                                <i class="fas fa-plus"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-image">
+                            <div class="image-placeholder">🧀</div>
+                        </div>
+                        <div class="item-details">
+                            <h3>Cheese Platter</h3>
+                            <p>Selection of artisanal cheeses with crackers and fruits</p>
+                            <div class="item-price">
+                                <span class="price" data-usd="22" data-eur="20" data-aed="81" data-inr="1799">$22</span>
+                            </div>
+                            <button class="add-to-cart" onclick="addToCart('Cheese Platter', 22, 'starters')">
+                                <i class="fas fa-plus"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-image">
+                            <div class="image-placeholder">🍄</div>
+                        </div>
+                        <div class="item-details">
+                            <h3>Stuffed Mushrooms</h3>
+                            <p>Button mushrooms stuffed with herbs and breadcrumbs</p>
+                            <div class="item-price">
+                                <span class="price" data-usd="14" data-eur="13" data-aed="51" data-inr="1199">$14</span>
+                            </div>
+                            <button class="add-to-cart" onclick="addToCart('Stuffed Mushrooms', 14, 'starters')">
+                                <i class="fas fa-plus"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Course -->
+            <div id="mains" class="menu-category">
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="item-image">
+                            <div class="image-placeholder">🥩</div>
+                            <div class="item-badge">Chef's Special</div>
+                        </div>
+                        <div class="item-details">
+                            <h3>Grilled Ribeye Steak</h3>
+                            <p>Premium ribeye steak with roasted vegetables and mashed potatoes</p>
+                            <div class="item-price">
+                                <span class="price" data-usd="45" data-eur="41" data-aed="165" data-inr="3749">$45</span>
+                            </div>
+                            <button class="add-to-cart" onclick="addToCart('Grilled Ribeye Steak', 45, 'mains')">
+                                <i class="fas fa-plus"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-image">
+                            <div class="image-placeholder">🐟</div>
+                        </div>
+                        <div class="item-details">
+                            <h3>Pan-Seared Salmon</h3>
+                            <p>Fresh Atlantic salmon with lemon butter sauce and asparagus</p>
+                            <div class="item-price">
+                                <span class="price" data-usd="32" data-eur="29" data-aed="118" data-inr="2659">$32</span>
+                            </div>
+                            <button class="add-to-cart" onclick="addToCart('Pan-Seared Salmon', 32, 'mains')">
+                                <i class="fas fa-plus"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-image">
+                            <div class="image-placeholder">🍝</div>
+                        </div>
+                        <div class="item-details">
+                            <h3>Truffle Pasta</h3>
+                            <p>Homemade pasta with black truffle and parmesan cream sauce</p>
+                            <div class="item-price">
+                                <span class="price" data-usd="28" data-eur="25" data-aed="103" data-inr="2329">$28</span>
+                            </div>
+                            <button class="add-to-cart" onclick="addToCart('Truffle Pasta', 28, 'mains')">
+                                <i class="fas fa-plus"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-image">
+                            <div class="image-placeholder">🍗</div>
+                        </div>
+                        <div class="item-details">
+                            <h3>Herb-Crusted Chicken</h3>
+                            <p>Free-range chicken breast with herb crust and seasonal vegetables</p>
+                            <div class="item-price">
+                                <span class="price" data-usd="24" data-eur="22" data-aed="88" data-inr="1999">$24</span>
+                            </div>
+                            <button class="add-to-cart" onclick="addToCart('Herb-Crusted Chicken', 24, 'mains')">
+                                <i class="fas fa-plus"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Beverages -->
+            <div id="drinks" class="menu-category">
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="item-image">
+                            <div class="image-placeholder">🍷</div>
+                        </div>
+                        <div class="item-details">
+                            <h3>House Red Wine</h3>
+                            <p>Premium red wine selection from our cellar</p>
+                            <div class="item-price">
+                                <span class="price" data-usd="8" data-eur="7" data-aed="29" data-inr="665">$8</span>
+                            </div>
+                            <button class="add-to-cart" onclick="addToCart('House Red Wine', 8, 'drinks')">
+                                <i class="fas fa-plus"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-image">
+                            <div class="image-placeholder">🥤</div>
+                        </div>
+                        <div class="item-details">
+                            <h3>Fresh Juice</h3>
+                            <p>Freshly squeezed orange, apple, or mixed fruit juice</p>
+                            <div class="item-price">
+                                <span class="price" data-usd="6" data-eur="5" data-aed="22" data-inr="499">$6</span>
+                            </div>
+                            <button class="add-to-cart" onclick="addToCart('Fresh Juice', 6, 'drinks')">
+                                <i class="fas fa-plus"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-image">
+                            <div class="image-placeholder">☕</div>
+                        </div>
+                        <div class="item-details">
+                            <h3>Espresso</h3>
+                            <p>Premium Italian espresso blend</p>
+                            <div class="item-price">
+                                <span class="price" data-usd="4" data-eur="4" data-aed="15" data-inr="333">$4</span>
+                            </div>
+                            <button class="add-to-cart" onclick="addToCart('Espresso', 4, 'drinks')">
+                                <i class="fas fa-plus"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-image">
+                            <div class="image-placeholder">🍸</div>
+                        </div>
+                        <div class="item-details">
+                            <h3>Signature Cocktail</h3>
+                            <p>Our bartender's special creation</p>
+                            <div class="item-price">
+                                <span class="price" data-usd="12" data-eur="11" data-aed="44" data-inr="999">$12</span>
+                            </div>
+                            <button class="add-to-cart" onclick="addToCart('Signature Cocktail', 12, 'drinks')">
+                                <i class="fas fa-plus"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desserts -->
+            <div id="desserts" class="menu-category">
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="item-image">
+                            <div class="image-placeholder">🍰</div>
+                            <div class="item-badge">Bestseller</div>
+                        </div>
+                        <div class="item-details">
+                            <h3>Chocolate Lava Cake</h3>
+                            <p>Warm chocolate cake with molten center and vanilla ice cream</p>
+                            <div class="item-price">
+                                <span class="price" data-usd="10" data-eur="9" data-aed="37" data-inr="832">$10</span>
+                            </div>
+                            <button class="add-to-cart" onclick="addToCart('Chocolate Lava Cake', 10, 'desserts')">
+                                <i class="fas fa-plus"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-image">
+                            <div class="image-placeholder">🍮</div>
+                        </div>
+                        <div class="item-details">
+                            <h3>Crème Brûlée</h3>
+                            <p>Classic French dessert with caramelized sugar top</p>
+                            <div class="item-price">
+                                <span class="price" data-usd="9" data-eur="8" data-aed="33" data-inr="749">$9</span>
+                            </div>
+                            <button class="add-to-cart" onclick="addToCart('Crème Brûlée', 9, 'desserts')">
+                                <i class="fas fa-plus"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-image">
+                            <div class="image-placeholder">🍨</div>
+                        </div>
+                        <div class="item-details">
+                            <h3>Gelato Selection</h3>
+                            <p>Three scoops of artisanal Italian gelato</p>
+                            <div class="item-price">
+                                <span class="price" data-usd="8" data-eur="7" data-aed="29" data-inr="665">$8</span>
+                            </div>
+                            <button class="add-to-cart" onclick="addToCart('Gelato Selection', 8, 'desserts')">
+                                <i class="fas fa-plus"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-image">
+                            <div class="image-placeholder">🥧</div>
+                        </div>
+                        <div class="item-details">
+                            <h3>Apple Tart</h3>
+                            <p>Traditional French apple tart with cinnamon</p>
+                            <div class="item-price">
+                                <span class="price" data-usd="7" data-eur="6" data-aed="26" data-inr="582">$7</span>
+                            </div>
+                            <button class="add-to-cart" onclick="addToCart('Apple Tart', 7, 'desserts')">
+                                <i class="fas fa-plus"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-cart"></i> Your Order</h3>
+            <button class="close-cart" onclick="toggleCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <div class="empty-cart">
+                <i class="fas fa-shopping-cart"></i>
+                <p>Your cart is empty</p>
+            </div>
+        </div>
+        <div class="cart-footer" id="cart-footer" style="display: none;">
+            <div class="cart-total">
+                <strong>Total: <span id="cart-total">$0</span></strong>
+            </div>
+            <button class="checkout-btn" onclick="showCheckout()">
+                <i class="fas fa-credit-card"></i> Proceed to Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Checkout</h2>
+                <button class="close-modal" onclick="closeCheckout()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="checkout-content">
+                <div class="checkout-section">
+                    <h3><i class="fas fa-user"></i> Customer Information</h3>
+                    <form id="customer-form">
+                        <div class="form-group">
+                            <input type="text" id="customer-name" placeholder="Full Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="customer-email" placeholder="Email Address" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="customer-phone" placeholder="Phone Number" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="customer-address" placeholder="Delivery Address" required></textarea>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="checkout-section">
+                    <h3><i class="fas fa-credit-card"></i> Payment Method</h3>
+                    <div class="payment-methods">
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="card" checked>
+                            <div class="payment-card">
+                                <i class="fas fa-credit-card"></i>
+                                <span>Credit/Debit Card</span>
+                            </div>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="upi">
+                            <div class="payment-card">
+                                <i class="fas fa-mobile-alt"></i>
+                                <span>UPI Payment</span>
+                            </div>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="paypal">
+                            <div class="payment-card">
+                                <i class="fab fa-paypal"></i>
+                                <span>PayPal</span>
+                            </div>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="cod">
+                            <div class="payment-card">
+                                <i class="fas fa-money-bill-wave"></i>
+                                <span>Cash on Delivery</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="checkout-section" id="card-details">
+                    <h3><i class="fas fa-lock"></i> Card Details</h3>
+                    <div class="form-group">
+                        <input type="text" id="card-number" placeholder="Card Number" maxlength="19">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" id="expiry-date" placeholder="MM/YY" maxlength="5">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="cvv" placeholder="CVV" maxlength="3">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="order-summary">
+                    <h3>Order Summary</h3>
+                    <div id="checkout-items"></div>
+                    <div class="summary-total">
+                        <strong>Total: <span id="checkout-total">$0</span></strong>
+                    </div>
+                </div>
+
+                <button class="place-order-btn" onclick="placeOrder()">
+                    <i class="fas fa-check"></i> Place Order
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reservations Section -->
+    <section id="reservations" class="reservations-section">
+        <div class="container">
+            <h2 class="section-title">Make a Reservation</h2>
+            <div class="reservation-form-container">
+                <form id="reservation-form" class="reservation-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="res-name">Full Name</label>
+                            <input type="text" id="res-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="res-email">Email</label>
+                            <input type="email" id="res-email" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="res-phone">Phone</label>
+                            <input type="tel" id="res-phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="res-guests">Guests</label>
+                            <select id="res-guests" required>
+                                <option value="">Select guests</option>
+                                <option value="1">1 Guest</option>
+                                <option value="2">2 Guests</option>
+                                <option value="3">3 Guests</option>
+                                <option value="4">4 Guests</option>
+                                <option value="5">5 Guests</option>
+                                <option value="6">6 Guests</option>
+                                <option value="7">7 Guests</option>
+                                <option value="8">8+ Guests</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="res-date">Date</label>
+                            <input type="date" id="res-date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="res-time">Time</label>
+                            <select id="res-time" required>
+                                <option value="">Select time</option>
+                                <option value="17:00">5:00 PM</option>
+                                <option value="17:30">5:30 PM</option>
+                                <option value="18:00">6:00 PM</option>
+                                <option value="18:30">6:30 PM</option>
+                                <option value="19:00">7:00 PM</option>
+                                <option value="19:30">7:30 PM</option>
+                                <option value="20:00">8:00 PM</option>
+                                <option value="20:30">8:30 PM</option>
+                                <option value="21:00">9:00 PM</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="res-special">Special Requests</label>
+                        <textarea id="res-special" placeholder="Any dietary restrictions or special occasions?"></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-calendar-check"></i> Reserve Table
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="events-section">
+        <div class="container">
+            <h2 class="section-title">Upcoming Events</h2>
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="event-image">
+                        <div class="event-icon">🍷</div>
+                    </div>
+                    <div class="event-content">
+                        <div class="event-date">August 15, 2025</div>
+                        <h3>Wine Tasting Evening</h3>
+                        <p>Join us for an exclusive wine tasting featuring premium selections from renowned vineyards.</p>
+                        <div class="event-price">$75 per person</div>
+                        <button class="btn-secondary">Book Now</button>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-image">
+                        <div class="event-icon">👨‍🍳</div>
+                    </div>
+                    <div class="event-content">
+                        <div class="event-date">August 22, 2025</div>
+                        <h3>Chef's Table Experience</h3>
+                        <p>An intimate dining experience with our head chef featuring a 7-course tasting menu.</p>
+                        <div class="event-price">$150 per person</div>
+                        <button class="btn-secondary">Book Now</button>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-image">
+                        <div class="event-icon">🎵</div>
+                    </div>
+                    <div class="event-content">
+                        <div class="event-date">September 5, 2025</div>
+                        <h3>Jazz Night</h3>
+                        <p>Enjoy live jazz music while savoring our signature dishes in an elegant atmosphere.</p>
+                        <div class="event-price">$45 per person</div>
+                        <button class="btn-secondary">Book Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Support Section -->
+    <section id="support" class="support-section">
+        <div class="container">
+            <h2 class="section-title">Customer Support</h2>
+            <div class="support-grid">
+                <div class="support-card">
+                    <div class="support-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Our customer support team is available 24/7 to assist you with any queries.</p>
+                    <button class="btn-secondary" onclick="openChat()">Start Chat</button>
+                </div>
+                <div class="support-card">
+                    <div class="support-icon">
+                        <i class="fas fa-undo-alt"></i>
+                    </div>
+                    <h3>Refund Policy</h3>
+                    <p>If your order is missing or incorrect, we offer full refunds or replacement within 30 minutes.</p>
+                    <button class="btn-secondary" onclick="openRefundForm()">Request Refund</button>
+                </div>
+                <div class="support-card">
+                    <div class="support-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>Order Tracking</h3>
+                    <p>Track your order in real-time from kitchen to your doorstep.</p>
+                    <button class="btn-secondary" onclick="openOrderTracking()">Track Order</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="reviews-section">
+        <div class="container">
+            <h2 class="section-title">Customer Reviews</h2>
+            <div class="reviews-stats">
+                <div class="overall-rating">
+                    <div class="rating-number">4.8</div>
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="rating-text">Based on 1,247 reviews</div>
+                </div>
+                <div class="rating-breakdown">
+                    <div class="rating-bar">
+                        <span>5 stars</span>
+                        <div class="bar"><div class="fill" style="width: 75%"></div></div>
+                        <span>75%</span>
+                    </div>
+                    <div class="rating-bar">
+                        <span>4 stars</span>
+                        <div class="bar"><div class="fill" style="width: 18%"></div></div>
+                        <span>18%</span>
+                    </div>
+                    <div class="rating-bar">
+                        <span>3 stars</span>
+                        <div class="bar"><div class="fill" style="width: 5%"></div></div>
+                        <span>5%</span>
+                    </div>
+                    <div class="rating-bar">
+                        <span>2 stars</span>
+                        <div class="bar"><div class="fill" style="width: 1%"></div></div>
+                        <span>1%</span>
+                    </div>
+                    <div class="rating-bar">
+                        <span>1 star</span>
+                        <div class="bar"><div class="fill" style="width: 1%"></div></div>
+                        <span>1%</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="reviews-container">
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">👤</div>
+                            <div class="reviewer-details">
+                                <h4>Sarah Johnson</h4>
+                                <div class="review-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-date">2 days ago</div>
+                    </div>
+                    <p class="review-text">Amazing food and excellent service! The ribeye steak was cooked to perfection. Will definitely come back!</p>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">👨</div>
+                            <div class="reviewer-details">
+                                <h4>Michael Chen</h4>
+                                <div class="review-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-date">1 week ago</div>
+                    </div>
+                    <p class="review-text">Best dining experience in the city! The atmosphere is perfect for special occasions. Highly recommended!</p>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">👩</div>
+                            <div class="reviewer-details">
+                                <h4>Emma Davis</h4>
+                                <div class="review-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-date">2 weeks ago</div>
+                    </div>
+                    <p class="review-text">Great food and ambiance. The only minor issue was the wait time, but the quality made up for it.</p>
+                </div>
+            </div>
+            
+            <div class="add-review-section">
+                <h3>Share Your Experience</h3>
+                <form id="review-form" class="review-form">
+                    <div class="rating-input">
+                        <label>Your Rating:</label>
+                        <div class="star-rating">
+                            <input type="radio" name="rating" value="5" id="star5">
+                            <label for="star5"><i class="fas fa-star"></i></label>
+                            <input type="radio" name="rating" value="4" id="star4">
+                            <label for="star4"><i class="fas fa-star"></i></label>
+                            <input type="radio" name="rating" value="3" id="star3">
+                            <label for="star3"><i class="fas fa-star"></i></label>
+                            <input type="radio" name="rating" value="2" id="star2">
+                            <label for="star2"><i class="fas fa-star"></i></label>
+                            <input type="radio" name="rating" value="1" id="star1">
+                            <label for="star1"><i class="fas fa-star"></i></label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="reviewer-name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="review-text" placeholder="Share your experience..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-paper-plane"></i> Submit Review
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chat Support Modal -->
+    <div id="chat-modal" class="modal">
+        <div class="modal-content chat-modal">
+            <div class="modal-header">
+                <h3><i class="fas fa-comments"></i> Customer Support</h3>
+                <button class="close-modal" onclick="closeChat()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chat-container">
+                <div class="chat-messages" id="chat-messages">
+                    <div class="message bot-message">
+                        <div class="message-avatar">🤖</div>
+                        <div class="message-content">
+                            <p>Hello! I'm here to help you. How can I assist you today?</p>
+                            <div class="quick-actions">
+                                <button onclick="selectQuery('order-issue')">Order Issue</button>
+                                <button onclick="selectQuery('refund')">Refund Request</button>
+                                <button onclick="selectQuery('menu-inquiry')">Menu Inquiry</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="chat-input" placeholder="Type your message...">
+                    <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Refund Modal -->
+    <div id="refund-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-undo-alt"></i> Request Refund</h3>
+                <button class="close-modal" onclick="closeRefundForm()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="refund-form" class="refund-form">
+                <div class="form-group">
+                    <label for="order-id">Order ID</label>
+                    <input type="text" id="order-id" placeholder="Enter your order ID" required>
+                </div>
+                <div class="form-group">
+                    <label for="refund-reason">Reason for Refund</label>
+                    <select id="refund-reason" required>
+                        <option value="">Select reason</option>
+                        <option value="missing-items">Missing Items</option>
+                        <option value="wrong-order">Wrong Order</option>
+                        <option value="quality-issue">Quality Issue</option>
+                        <option value="late-delivery">Late Delivery</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="refund-details">Additional Details</label>
+                    <textarea id="refund-details" placeholder="Please describe the issue in detail..."></textarea>
+                </div>
+                <button type="submit" class="btn-primary">
+                    <i class="fas fa-check"></i> Submit Refund Request
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Order Tracking Modal -->
+    <div id="tracking-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-truck"></i> Order Tracking</h3>
+                <button class="close-modal" onclick="closeOrderTracking()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="tracking-content">
+                <div class="form-group">
+                    <input type="text" id="tracking-id" placeholder="Enter your order ID">
+                    <button onclick="trackOrder()" class="btn-secondary">Track</button>
+                </div>
+                <div id="tracking-result" class="tracking-result"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Saveur Restaurant</h3>
+                    <p>Experience culinary excellence with every bite. We serve the finest dishes with premium ingredients and exceptional service.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#reservations">Reservations</a></li>
+                        <li><a href="#events">Events</a></li>
+                        <li><a href="#support">Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Gourmet Street, Food District</p>
+                        <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                        <p><i class="fas fa-envelope"></i> info@saveurrestaurant.com</p>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Opening Hours</h4>
+                    <div class="hours">
+                        <p>Monday - Thursday: 5:00 PM - 10:00 PM</p>
+                        <p>Friday - Saturday: 5:00 PM - 11:00 PM</p>
+                        <p>Sunday: 4:00 PM - 9:00 PM</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Saveur Restaurant. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="modal">
+        <div class="modal-content success-modal">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3 id="success-title">Order Placed Successfully!</h3>
+            <p id="success-message">Your order has been confirmed and is being prepared.</p>
+            <div class="order-details" id="order-details"></div>
+            <button class="btn-primary" onclick="closeSuccessModal()">Continue</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
